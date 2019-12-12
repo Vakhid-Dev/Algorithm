@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Algorithms
+﻿namespace Algorithms
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Algorithm
     {
         public int BinarySearch<T>(ref List<T> list, T value)
@@ -82,16 +82,16 @@ namespace Algorithms
 
         public void Swap(ref int a, ref int b)
         {
-            int c = a;
+            int temp = a;
             a = b;
-            b = c;
+            b = temp;
         }
 
-        private void Swap(ref double v1, ref double v2)
+        private void Swap(ref double a, ref double b)
         {
-            double temp = v1;
-            v1 = v2;
-            v2 = temp;
+            double temp = a;
+            a = b;
+            b = temp;
         }
 
         public static bool IsPrime(int n)
@@ -159,6 +159,7 @@ namespace Algorithms
 
             return this.FibonacciRecursive(n - 1) + this.FibonacciRecursive(n - 2);
         }
+
         public int GCD(int m, int n)
         {
             int a = m;
@@ -280,6 +281,7 @@ namespace Algorithms
                 this.Sieve(ref a, k, 0);
             }
         }
+
         private void Sieve(ref double[] a, int n, int i)
         {
             while (true)
@@ -306,6 +308,7 @@ namespace Algorithms
                 i = s;
             }
         }
+
         public bool StartWith(string prefix, string postfix)
         {
             bool result = true;
@@ -326,6 +329,7 @@ namespace Algorithms
 
             return result;
         }
+
         public static string GetMiddle(string s)
         {
             var temp = s.ToCharArray();
@@ -380,6 +384,74 @@ namespace Algorithms
         public static string SeriesSum(int n)
         {
             return (from i in Enumerable.Range(0, n) select 1.0 / ((3 * i) + 1)).Sum().ToString("0.00");
+        }
+
+        public void NumberIsPrimes(int n, int[] primes)
+        {
+            int numPrimes = 0;
+            primes[0] = 2;
+            ++numPrimes;
+            int p = 3;
+            while (numPrimes < n)
+            {
+                bool prime = true;
+                for (int i = 0; prime && i < numPrimes; ++i)
+                {
+                    int d = primes[i];
+                    if (d * d > p)
+                    {
+                        break;
+                    }
+                    else if (p % d == 0)
+                    {
+                        prime = false;
+                    }
+                }
+
+                if (prime)
+                {
+                    primes[numPrimes] = p;
+                    ++numPrimes;
+                }
+                p += 2;
+
+            }
+
+        }
+
+        public void IncreaseKapasiteIncreasingCount(List<int> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                list.Add(i);
+                Console.WriteLine("Capacity after {0} element: {1}", i, list.Capacity);
+            }
+
+        }
+
+        public void Factorissation(long n)
+        {
+            int d = 2;
+            int k = 0;
+            while (d <= n)
+            {
+                if (n % d == 0)
+                {
+                    Console.WriteLine(d);
+                    ++k;
+                    n /= d;
+                }
+                else if (d == 2) { ++d; }
+                else
+                {
+                    d += 2;
+                }
+            }
+            Console.WriteLine("\n");
+            if (k == 1)
+            {
+                Console.WriteLine("Prime\n");
+            }
         }
     }
 
