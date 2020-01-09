@@ -97,7 +97,6 @@
         public static bool IsPrime(int n)
         {
             if (n < 2 || n % 2 == 0)
-
             {
                 return false;
             }
@@ -160,30 +159,8 @@
             return this.FibonacciRecursive(n - 1) + this.FibonacciRecursive(n - 2);
         }
 
-        public int GCD(int m, int n)
-        {
-            int a = m;
-            int b = n;
-            while (b != 0)
-            {
-                int r = a % b;
-                a = b;
-                b = r;
-            }
+        public double Function(double x)=> (x * x * x) - x - 1;
 
-            return a;
-        }
-        //Кубическое  уравнение  вида x*x*x-1
-        public double Function(double x)
-        => (x * x * x) - x - 1;
-        // Ищет корень функции Function на отрезке a b заданной точки эпсилон
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a">Конец 1 отрезка</param>
-        /// <param name="b">Конец 2 отрезка</param>
-        /// <param name="eps">Заданная точка эпсилон </param>
-        /// <returns></returns>
         public double Root(double a, double b, double eps)
         {
             double fa = Function(a);
@@ -282,7 +259,7 @@
             }
         }
 
-        private void Sieve(ref double[] a, int n, int i)
+        public void Sieve(ref double[] a, int n, int i)
         {
             while (true)
             {
@@ -413,10 +390,9 @@
                     primes[numPrimes] = p;
                     ++numPrimes;
                 }
+
                 p += 2;
-
             }
-
         }
 
         public void IncreaseKapasiteIncreasingCount(List<int> list)
@@ -426,7 +402,6 @@
                 list.Add(i);
                 Console.WriteLine("Capacity after {0} element: {1}", i, list.Capacity);
             }
-
         }
 
         public void Factorissation(long n)
@@ -447,27 +422,45 @@
                     d += 2;
                 }
             }
+
             Console.WriteLine("\n");
             if (k == 1)
             {
                 Console.WriteLine("Prime\n");
             }
         }
-          int GCD(int m, int n)
 
+        int GCD(int m, int n)
           {
-
-            while (n!=0)
-
+            while (n != 0)
             {
-                int r = m% n;
+                int r = m % n;
                 m = n;
                 n = r;
-         
             }
+
             return m;
-          
+        }
+
+        long Powmod(long a, long k)
+        {
+            long b = 1;
+
+            while (k > 0)
+            {
+                if (k % 2 == 0)
+                {
+                    k /= 2;
+                    a *= a;
+                }
+                else
+                {
+                    k--;
+                    b *= a;
+                }
+            }
+
+            return b;
         }
     }
-
 }
