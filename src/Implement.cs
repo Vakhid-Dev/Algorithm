@@ -403,7 +403,7 @@
                 Console.WriteLine("Capacity after {0} element: {1}", i, list.Capacity);
             }
         }
-        // Алгоритм парсировки некоректнй Даты.
+        // Алгоритм парсировки некоректной Даты.
         public static string Correct(string dateString)
         {
             if (string.IsNullOrEmpty(dateString))
