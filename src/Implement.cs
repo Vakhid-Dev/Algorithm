@@ -403,6 +403,28 @@
                 Console.WriteLine("Capacity after {0} element: {1}", i, list.Capacity);
             }
         }
+        // Алгоритм парсировки некоректнй Даты.
+        public static string Correct(string dateString)
+        {
+            if (string.IsNullOrEmpty(dateString))
+            {
+                return dateString;
+            }
+
+            var dateMatch = Regex.Match(dateString, DatePattern);
+            if (!dateMatch.Success)
+            {
+                return null;
+            }
+
+            int days = int.Parse(dateMatch.Groups["days"].Value);
+            int months = int.Parse(dateMatch.Groups["months"].Value);
+            int years = int.Parse(dateMatch.Groups["years"].Value);
+
+            var date = DateTime.MinValue.AddYears(years - 1).AddMonths(months - 1).AddDays(days - 1);
+        
+            return date.ToString("dd.MM.yyyy");
+        }
 
         public void Factorissation(long n)
         {
