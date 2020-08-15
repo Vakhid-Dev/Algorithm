@@ -96,15 +96,15 @@
 
         public static bool IsPrime(int n)
         {
+             if (n == 2)
+            {
+                return true;
+            }
             if (n < 2 || n % 2 == 0)
             {
                 return false;
             }
-            else if (n == 2)
-            {
-                return true;
-            }
-
+            
             int d = 3;
             while (d * d <= n)
             {
