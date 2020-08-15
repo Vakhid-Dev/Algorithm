@@ -93,7 +93,7 @@
             a = b;
             b = temp;
         }
-        //Linq
+        //Short
        public static bool IsPrime(int n)
        {
         if (n <= 2 || n % 2 == 0) return n == 2;
