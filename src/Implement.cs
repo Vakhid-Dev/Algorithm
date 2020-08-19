@@ -431,7 +431,15 @@
         
             return date.ToString("dd.MM.yyyy");
         }
-
+        // Парсировка для карты 
+  public static string Maskify(string cc)
+  {
+    int len = cc.Length;
+    if (len <=4)
+      return cc;
+        
+    return cc.Substring(len-4).PadLeft(len, '#');
+  }
         public void Factorissation(long n)
         {
             int d = 2;
