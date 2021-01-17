@@ -142,17 +142,18 @@
             {
                 return n;
             }
-
-            int fibo = 1;
-            int fiboPrev = 1;
-            for (int i = 2; i < n; ++i)
+            var next = 1;
+            var prev = 0;
+           
+            for (int i = 1; i <= n; i++)
             {
-                int temp = fibo;
-                fibo += fiboPrev;
-                fiboPrev = temp;
+                var sum = prev + next;
+                prev = next;
+                next = sum;
+
             }
 
-            return fibo;
+            return prev;
         }
 
         public int FibonacciRecursive(int n)
