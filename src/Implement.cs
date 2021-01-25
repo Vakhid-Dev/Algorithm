@@ -241,9 +241,6 @@ namespace Algorithms
 
             return arr;
         }
-
-
-
         public bool StartWith(string prefix, string postfix)
         {
             bool result = true;
@@ -450,5 +447,10 @@ namespace Algorithms
 
             return b;
         }
+
+        public static object[] RemoveEveryOther(object[] arr) =>
+            arr.Where((x, y) => ++y % 2 != 0).
+                Select(x => x).
+                ToArray();
     }
 }
