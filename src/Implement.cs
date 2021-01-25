@@ -1,4 +1,6 @@
-﻿namespace Algorithms
+﻿using System.Text.RegularExpressions;
+
+namespace Algorithms
 {
     using System;
     using System.Collections.Generic;
@@ -93,16 +95,10 @@
             a = b;
             b = temp;
         }
-        //Short
-       public static bool IsPrime(int n)
-       {
-        if (n <= 2 || n % 2 == 0) return n == 2;
-        for (int i = 3; i <= Math.Sqrt(n); i += 2) if (n % i == 0) return false;
-        return true;
-      }
+
         public static bool IsPrime(int n)
         {
-             if (n == 2)
+            if (n == 2)
             {
                 return true;
             }
@@ -110,7 +106,7 @@
             {
                 return false;
             }
-            
+
             int d = 3;
             while (d * d <= n)
             {
@@ -144,7 +140,7 @@
             }
             var next = 1;
             var prev = 0;
-           
+
             for (int i = 1; i <= n; i++)
             {
                 var sum = prev + next;
@@ -166,7 +162,7 @@
             return this.FibonacciRecursive(n - 1) + this.FibonacciRecursive(n - 2);
         }
 
-        public double Function(double x)=> (x * x * x) - x - 1;
+        public double Function(double x) => (x * x * x) - x - 1;
 
         public double Root(double a, double b, double eps)
         {
@@ -246,52 +242,7 @@
             return arr;
         }
 
-        // Heap Sort with Sieve method
-        public void HeapSort(ref double[] a, int n)
-        {
-            int k = n / 2;
-            while (k > 0)
-            {
-                --k;
-                this.Sieve(ref a, n, k);
-            }
 
-            k = n;
-
-            while (k > 1)
-            {
-                --k;
-                this.Swap(ref a[0], ref a[k]);
-                this.Sieve(ref a, k, 0);
-            }
-        }
-
-        public void Sieve(ref double[] a, int n, int i)
-        {
-            while (true)
-            {
-                int s0 = (2 * i) + 1;
-                if (s0 >= n)
-                {
-                    break;
-                }
-
-                int s1 = s0 + 1;
-                int s = s0;
-                if (s1 < n && a[s1] > a[s0])
-                {
-                    s = s1;
-                }
-
-                if (a[i] >= a[s])
-                {
-                    break;
-                }
-
-                this.Swap(ref a[i], ref a[s]);
-                i = s;
-            }
-        }
 
         public bool StartWith(string prefix, string postfix)
         {
@@ -411,36 +362,36 @@
             }
         }
         // Алгоритм парсировки некоректной Даты.
-        public static string Correct(string dateString)
-        {
-            if (string.IsNullOrEmpty(dateString))
-            {
-                return dateString;
-            }
+        //public static string Correct(string dateString)
+        //{
+        //    if (string.IsNullOrEmpty(dateString))
+        //    {
+        //        return dateString;
+        //    }
 
-            var dateMatch = Regex.Match(dateString, DatePattern);
-            if (!dateMatch.Success)
-            {
-                return null;
-            }
+        //    var dateMatch = Regex.Match(dateString, DatePattern);
+        //    if (!dateMatch.Success)
+        //    {
+        //        return null;
+        //    }
 
-            int days = int.Parse(dateMatch.Groups["days"].Value);
-            int months = int.Parse(dateMatch.Groups["months"].Value);
-            int years = int.Parse(dateMatch.Groups["years"].Value);
+        //    int days = int.Parse(dateMatch.Groups["days"].Value);
+        //    int months = int.Parse(dateMatch.Groups["months"].Value);
+        //    int years = int.Parse(dateMatch.Groups["years"].Value);
 
-            var date = DateTime.MinValue.AddYears(years - 1).AddMonths(months - 1).AddDays(days - 1);
-        
-            return date.ToString("dd.MM.yyyy");
-        }
+        //    var date = DateTime.MinValue.AddYears(years - 1).AddMonths(months - 1).AddDays(days - 1);
+
+        //    return date.ToString("dd.MM.yyyy");
+        //}
         // Парсировка для карты 
-  public static string Maskify(string cc)
-  {
-    int len = cc.Length;
-    if (len <=4)
-      return cc;
-        
-    return cc.Substring(len-4).PadLeft(len, '#');
-  }
+        public static string Maskify(string cc)
+        {
+            int len = cc.Length;
+            if (len <= 4)
+                return cc;
+
+            return cc.Substring(len - 4).PadLeft(len, '#');
+        }
         public void Factorissation(long n)
         {
             int d = 2;
@@ -468,7 +419,7 @@
         }
 
         int GCD(int m, int n)
-          {
+        {
             while (n != 0)
             {
                 int r = m % n;
