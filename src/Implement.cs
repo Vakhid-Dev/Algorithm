@@ -13,6 +13,7 @@ namespace Algorithms
             if (list == null || list.Count <= 0)
             {
                 return -1;
+                
             }
 
             if (!list.Contains(value))
