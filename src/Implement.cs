@@ -453,5 +453,21 @@ namespace Algorithms
             arr.Where((x, y) => ++y % 2 != 0).
                 Select(x => x).
                 ToArray();
+        //Message Validator  https://www.codewars.com/kata/5fc7d2d2682ff3000e1a3fbc/solutions/csharp
+        public static bool isAValidMessage(string message)
+        {
+
+            MatchCollection reg = Regex.Matches(message, @"(\d+)([A-z]*)");
+
+            bool res = true;
+            for (int i = 0; i < reg.Count(); i++)
+            {
+                if (reg[i].Groups[1].Value != reg[i].Groups[2].Length.ToString())
+                {
+                    res = false;
+                }
+            }
+            return res;
+        }
     }
 }
