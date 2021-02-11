@@ -453,7 +453,7 @@ namespace Algorithms
             arr.Where((x, y) => ++y % 2 != 0).
                 Select(x => x).
                 ToArray();
-        //Message Validator  https://www.codewars.com/kata/5fc7d2d2682ff3000e1a3fbc/solutions/csharp
+        //Message Validator  https://www.codewars.com/kata/5fc7d2d2682ff3000e1a3fbc/solutions/csharp 6 ku
         public static bool isAValidMessage(string message)
         {
 
